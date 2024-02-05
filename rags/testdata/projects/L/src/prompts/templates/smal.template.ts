@@ -1,0 +1,20 @@
+import { PromptTemplate } from "langchain/prompts";
+//prompt templates
+const socialPost = PromptTemplate.fromTemplate('Generate 5 social media posts that can be shared across facebook, twitter, linkedin, and instagram for a law firm in {state} called {firmname} that focuses on {practice}. Our website is {weburl}. The posts need to be appropriate and formal for a law firm but also engage audiences. Make one of the posts a relevant statistic or figure, make another post a question, make another post about how we help our clients, and make the 4th post about a relevant law or update to relevant law. Also include relevant hashtags, a combined list of relevant SEO and stock image key words for each post. Do not include the word expert nor expertise.');
+const socialVPost = PromptTemplate.fromTemplate(`Generate a viral linkedin post that can be shared across facebook, twitter, linkedin, and facebook for a law firm in {state} called {firmname} that focuses on {practice}. Our website is {weburl}. The posts need to be appropriate and formal for a law firm but also engage audiences. Also include relevant hashtags, a combined list of relevant SEO and stock image key words for each post. Do not include the word expert nor expertise.`);
+
+const socialKeywords = PromptTemplate.fromTemplate('Give me one primary keyword about {practice}. Give me four secondary keywords related to {practice}. Make one keyword long tail, make one keyword midtail, and make one related to {practice} {state}. Only make these keywords about {practice}.')
+
+//future upgrade: parse practice into a str[] and join with (' or ')
+//or do this in web
+
+const postKeywords = PromptTemplate.fromTemplate('Give me 5 commonly searched keywords unique to the post above and ensure there is no word overlap in keywords. make 2 keywords that relate the 2 most unique words in the post to {practice}. make 3 keywords that show the connection between the post and {practice}. Make one keyword long tail, make one keyword midtail, and make one related to {practice} {state}. Only make these keywords about the specified subject of the post and {practice}.')
+    
+const imageDesc = PromptTemplate.fromTemplate('Create an image that encapsulates or emphasizes the tone and subject of the post above. the tone of the image should be set by the tone of the post, if it is appealing. For example: if the tone of the post is related to an emotional topic, display human emotion and ensure that the audience viewing this image resonates with the emotion in the image. the subject of the photo should be set by the tone of the post. For example: if the post addresses the audience from a second-person perspective, Make this image representative of a client experiencing a relatable pain point related to the post above and {practice}. If the post subject is a fact or statement that does not reference the audience, create a visual with objects that are commonly associated with {practice} or clients that need help with {practice}. Do not display anything other than subjects of the post or things related to {practice}.')
+
+
+const imageDescV = 'This image aims to grab the attention of social media viewers by showing them an image that represents how aspects of {practice} can impact their daily lives.'
+
+const imageKeywords = PromptTemplate.fromTemplate('Give me one primary stock image query keyword that would most likely return the image described. To increase our chances of finding stock images similar to the image described, choose 4 words from common keywords and or non-case nouns that refer only to objects in the image or {practice}. Make one keyword long tail, make one keyword midtail, make one related to {practice} in {state}, and make one describe the most common object in the photo. Only make these keywords about objects in the image or {practice} or {state}.')
+
+export { socialPost, socialVPost, socialKeywords, postKeywords, imageDesc, imageKeywords }
